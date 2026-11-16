@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ご購入手続き | Rosé Lumière</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#8e2a24">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238e2a24'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' text-anchor='middle' fill='%23e2cd94'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="co-page">
+
+<header class="co-header">
+  <div class="co-header-inner">
+    <a href="index.html#products" class="co-back">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span>買い物を続ける</span>
+    </a>
+    <a href="index.html" class="logo" aria-label="Rosé Lumière ホーム">
+      <span class="logo-en">Rosé Lumière</span>
+      <span class="logo-ja">ROSE &amp; BOTANICAL CARE</span>
+    </a>
+    <p class="co-secure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><span>SSL暗号化通信</span></p>
+  </div>
+</header>
+
+<main class="co-main">
+  <ol class="co-steps" aria-label="ご購入の流れ">
+    <li class="done"><span>1</span>カート</li>
+    <li class="current" data-step="form" aria-current="step"><span>2</span>お客様情報</li>
+    <li data-step="review"><span>3</span><i class="co-step-lbl"><em class="pc-only">ご注文内容の</em>確認</i></li>
+    <li data-step="done"><span>4</span>完了</li>
+  </ol>
+
+  <!-- ===== 商品が無いとき ===== -->
+  <section class="co-empty" id="coEmpty" hidden>
+    <p class="section-en">Your bag is empty</p>
+    <h1 class="section-title">カートに商品がありません</h1>
+    <a href="index.html#products" class="btn btn-dark">商品を見る</a>
+  </section>
+
+  <div class="co-grid" id="coGrid">
+    <!-- ===== 入力フォーム ===== -->
+    <form class="co-form" id="coForm" novalidate>
+      <h1 class="co-title">お客様情報の入力</h1>
+
+      <fieldset class="co-box">
+        <legend>ご連絡先</legend>
+        <div class="co-row">
+          <label class="co-field"><span class="co-label">メールアドレス<span class="req">必須</span></span>
+            <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="example@mail.com">
+            <span class="co-err">メールアドレスを正しく入力してください</span>
+          </label>
+          <label class="co-field"><span class="co-label">電話番号<span class="req">必須</span></span>
+            <input type="tel" name="tel" required autocomplete="tel" inputmode="tel" pattern="0\d{1,4}-?\d{1,4}-?\d{3,4}" placeholder="090-1234-5678">
+            <span class="co-err">電話番号を正しく入力してください</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="co-box">
+        <legend>お届け先</legend>
+        <div class="co-row">
+          <label class="co-field"><span class="co-label">姓<span class="req">必須</span></span>
+            <input type="text" name="lastName" required autocomplete="family-name" placeholder="山田">
+            <span class="co-err">姓を入力してください</span>
+          </label>
+          <label class="co-field"><span class="co-label">名<span class="req">必須</span></span>
+            <input type="text" name="firstName" required autocomplete="given-name" placeholder="花子">
+            <span class="co-err">名を入力してください</span>
+          </label>
+        </div>
+        <div class="co-row">
+          <label class="co-field"><span class="co-label">郵便番号<span class="req">必須</span></span>
+            <input type="text" name="zip" required autocomplete="postal-code" inputmode="numeric" pattern="\d{3}-?\d{4}" maxlength="8" placeholder="123-4567">
+            <span class="co-err">7桁の郵便番号を入力してください</span>
+          </label>
+          <label class="co-field"><span class="co-label">都道府県<span class="req">必須</span></span>
+            <select name="pref" required autocomplete="address-level1"><option value="">選択してください</option></select>
+            <span class="co-err">都道府県を選択してください</span>
+          </label>
+        </div>
+        <label class="co-field"><span class="co-label">市区町村・番地<span class="req">必須</span></span>
+          <input type="text" name="address" required autocomplete="address-line1" placeholder="渋谷区神宮前1-2-3">
+          <span class="co-err">市区町村・番地を入力してください</span>
+        </label>
+        <label class="co-field"><span class="co-label">建物名・部屋番号<span class="opt">任意</span></span>
+          <input type="text" name="building" autocomplete="address-line2" placeholder="ローズマンション 101">
+        </label>
+      </fieldset>
+
+      <fieldset class="co-box">
+        <legend>配送</legend>
+        <div class="co-row">
+          <label class="co-field"><span class="co-label">お届け希望日
+            </span><select name="date" id="coDate"><option value="">指定なし（最短でお届け）</option></select>
+          </label>
+          <label class="co-field"><span class="co-label">お届け時間帯
+            </span><select name="time">
+              <option value="">指定なし</option><option>午前中</option><option>14〜16時</option>
+              <option>16〜18時</option><option>18〜20時</option><option>19〜21時</option>
+            </select>
+          </label>
+        </div>
+        <label class="co-check">
+          <input type="checkbox" name="gift" id="coGift">
+          <span><strong>ギフト包装を希望する（無料）</strong><small>リボン付きのボックスでお届けします</small></span>
+        </label>
+        <div class="co-gift" id="coGiftBox" hidden>
+          <label class="co-field"><span class="co-label">メッセージカード<span class="opt">任意・100文字まで</span></span>
+            <textarea name="message" rows="3" maxlength="100" placeholder="いつもありがとう。"></textarea>
+            <span class="co-count"><span id="coMsgCount">0</span> / 100</span>
+          </label>
+          <label class="co-check co-check-sm">
+            <input type="checkbox" name="hidePrice" checked>
+            <span>納品書に金額を記載しない</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="co-box">
+        <legend>お支払い方法</legend>
+        <div class="co-pay">
+          <label class="co-radio">
+            <input type="radio" name="pay" value="card" checked>
+            <span><strong>クレジットカード</strong><small>VISA / Mastercard / JCB / AMEX / Diners。ご注文確定後、決済代行会社の安全な画面でカード情報を入力します。</small></span>
+          </label>
+          <label class="co-radio">
+            <input type="radio" name="pay" value="konbini">
+            <span><strong>コンビニ払い</strong><small>ご注文後、お支払い番号をメールでお送りします。ご入金確認後の発送です。</small></span>
+          </label>
+          <label class="co-radio">
+            <input type="radio" name="pay" value="cod">
+            <span><strong>代金引換</strong><small>商品お受け取り時に配達員へお支払いください。手数料 ¥330</small></span>
+          </label>
+          <label class="co-radio">
+            <input type="radio" name="pay" value="bank">
+            <span><strong>銀行振込（前払い）</strong><small>ご注文後、振込先をメールでお送りします。ご入金確認後の発送です。</small></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="co-submit">
+        <p class="co-form-err" role="alert"></p>
+        <button type="submit" class="btn btn-dark btn-block">ご注文内容の確認へ進む</button>
+        <a href="index.html#products" class="co-sublink">買い物を続ける</a>
+      </div>
+    </form>
+
+    <!-- ===== 確認画面（特定商取引法 第12条の6 に対応した最終確認） ===== -->
+    <section class="co-review" id="coReview" hidden aria-labelledby="reviewTitle">
+      <h1 class="co-title" id="reviewTitle" tabindex="-1">ご注文内容の確認</h1>
+      <p class="co-lead">以下の内容でよろしければ「注文を確定する」を押してください。まだご注文は確定していません。</p>
+      <dl class="co-dl" id="coReviewList"></dl>
+      <div class="co-policy">
+        <h2>返品・キャンセルについて</h2>
+        <p>商品の性質上、お客様都合による開封後の返品はお受けできません。未開封の場合は、商品到着後8日以内にご連絡ください（返送料はお客様負担）。不良品・誤配送の場合は送料当社負担で交換いたします。ご注文確定後のキャンセルは、発送前に限り承ります。</p>
+      </div>
+      <label class="co-check">
+        <input type="checkbox" id="coAgree">
+        <span><a href="#">特定商取引法に基づく表記</a>・<a href="#">プライバシーポリシー</a>に同意する</span>
+      </label>
+      <div class="co-submit">
+        <p class="co-form-err" id="coAgreeErr" role="alert"></p>
+        <button type="button" class="btn btn-dark btn-block" id="coPlace">注文を確定する</button>
+        <button type="button" class="co-sublink" id="coEdit">入力内容を修正する</button>
+      </div>
+    </section>
+
+    <!-- ===== ご注文内容（右側） ===== -->
+    <aside class="co-summary" aria-label="ご注文内容">
+      <button type="button" class="co-sum-toggle" aria-expanded="false" aria-controls="coSumBody">
+        <span>ご注文内容を表示</span><strong class="co-sum-total">¥0</strong>
+      </button>
+      <div class="co-sum-body" id="coSumBody">
+        <h2 class="co-sum-h">ご注文内容 <span id="coBuyNowTag" class="co-tag" hidden>この商品のみ購入</span></h2>
+        <ul class="co-items" id="coItems"></ul>
+        <form class="co-coupon" id="coCoupon" novalidate>
+          <label class="sr-only" for="coCouponInput">クーポンコード</label>
+          <input type="text" id="coCouponInput" placeholder="クーポンコード" autocomplete="off" autocapitalize="characters">
+          <button type="submit" class="btn btn-line">適用</button>
+        </form>
+        <p class="co-coupon-msg" id="coCouponMsg" role="status"></p>
+        <dl class="totals co-totals" id="coTotals"></dl>
+        <p class="co-ship-note" id="coShipNote"></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===== 完了画面 ===== -->
+  <section class="co-done" id="coDone" hidden aria-labelledby="doneTitle">
+    <div class="co-done-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <p class="section-en">Thank you</p>
+    <h1 class="section-title" id="doneTitle" tabindex="-1">ご注文ありがとうございました</h1>
+    <p class="co-order-no">ご注文番号 <strong id="coOrderNo"></strong></p>
+    <p class="co-done-text" id="coDoneText"></p>
+    <p class="co-demo">※ これはデモサイトです。実際の注文・決済・メール送信は行われていません。</p>
+    <a href="index.html" class="btn btn-dark">トップページへ戻る</a>
+  </section>
+</main>
+
+<footer class="co-footer">
+  <ul>
+    <li><a href="index.html#faq">よくある質問</a></li>
+    <li><a href="index.html#contact">お問い合わせ</a></li>
+    <li><a href="#">特定商取引法に基づく表記</a></li>
+    <li><a href="#">プライバシーポリシー</a></li>
+  </ul>
+  <p>&copy; Rosé Lumière</p>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
